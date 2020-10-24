@@ -72,10 +72,8 @@ defmodule AbsintheErrorPayload.ValidationMessageTypes do
 
     If there are multiple errors to display for a field, multiple validation
     messages will be in the result.
-
-    This field may be null in cases where an error cannot be applied to a specific field.
     """
-    field(:field, :string, description: @descs.field)
+    field(:field, non_null(:string), description: @descs.field)
 
     @desc """
     A friendly error message, appropriate for display to the end user.
@@ -87,7 +85,7 @@ defmodule AbsintheErrorPayload.ValidationMessageTypes do
     This message may change without notice, so we do not recommend you match against the text.
     Instead, use the *code* field for matching.
     """
-    field(:message, :string, description: @descs.message)
+    field(:message, non_null(:string), description: @descs.message)
 
     @desc "A unique error code for the type of validation used."
     field(:code, non_null(:string), description: @descs.code)
